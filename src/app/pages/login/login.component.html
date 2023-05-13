@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-4 mx-a">
+            <form action="" [formGroup]="form" (ngSubmit)="onSubmit($event)" class="form row mt-5">
+                <mat-form-field class="col-md-12" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input type="text" matInput formControlName="email">
+
+                    <mat-error *ngIf="form.get('email')?.errors?.['required']">Email is required</mat-error>
+                    <mat-error *ngIf="form.get('email')?.errors?.['email']">Email is invalid</mat-error>
+                </mat-form-field>
+            
+                <mat-form-field class="col-md-12" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput formControlName="password">
+
+                    <mat-error *ngIf="form.get('password')?.errors?.['required']">Password is required</mat-error>
+                    <mat-error *ngIf="form.get('password')?.errors?.['invalid']">Invalid credentials</mat-error>
+                </mat-form-field>
+            
+                <div>
+                    <button type="submit" class="col-md-12 btn" mat-raised-button color="primary" >Login 
+                        <mat-spinner *ngIf="isLoading" [diameter]="25"></mat-spinner>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

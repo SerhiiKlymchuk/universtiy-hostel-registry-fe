@@ -1,0 +1,22 @@
+.form {
+  ::ng-deep {
+    .btn {
+      font-size: 18px;
+			height: 48px;
+			margin-top: 15px;
+
+      .mdc-button__label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+
+        .mat-mdc-progress-spinner .mdc-circular-progress__determinate-circle,
+        .mat-mdc-progress-spinner
+          .mdc-circular-progress__indeterminate-circle-graphic {
+          stroke: #fafafa;
+        }
+      }
+    }
+  }
+}

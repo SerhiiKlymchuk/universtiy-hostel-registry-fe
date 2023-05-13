@@ -1,0 +1,63 @@
+<h1 mat-dialog-title>{{data.header}}</h1>
+<form [formGroup]="form" class="form" [class.loading]="isLoading" mat-dialog-content>
+  <mat-icon class="form-image">person</mat-icon>
+
+  <div class="fields-wrap">
+    <mat-form-field appearance="outline" floatLabel="always">
+      <input id="firstName" type="text" matInput placeholder="First Name" formControlName="firstName">
+      <mat-label for="firstName">First Name</mat-label>
+  
+      <ng-container *ngIf="form.get('firstName')?.touched && form.get('firstName')?.errors">
+        <mat-error class="error" *ngIf="form.get('firstName')?.errors?.['required']">First Name is required!</mat-error>
+        <mat-error class="error" *ngIf="form.get('firstName')?.errors?.['maxlength']">First Name is too long! No more than (180 chars)</mat-error>
+      </ng-container>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" floatLabel="always">
+      <input id="lastName" type="text" matInput placeholder="Last Name" formControlName="lastName">
+      <mat-label for="lastName">Last Name</mat-label>
+  
+      <ng-container *ngIf="form.get('lastName')?.touched && form.get('lastName')?.errors">
+        <mat-error class="error" *ngIf="form.get('lastName')?.errors?.['required']">Last Name is required!</mat-error>
+        <mat-error class="error" *ngIf="form.get('lastName')?.errors?.['maxlength']">Last Name is too long! No more than (180 chars)</mat-error>
+      </ng-container>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" floatLabel="always">
+      <input id="email" type="text" matInput placeholder="Email" formControlName="email">
+      <mat-label for="email">Email</mat-label>
+  
+      <ng-container *ngIf="form.get('email')?.touched && form.get('email')?.errors">
+        <mat-error class="error" *ngIf="form.get('email')?.errors?.['required']">Email is required!</mat-error>
+        <mat-error class="error" *ngIf="form.get('email')?.errors?.['email']">Email is invalid</mat-error>
+      </ng-container>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="birthDate">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+
+      <ng-container *ngIf="form.get('birthDate')?.touched && form.get('birthDate')?.errors">
+        <mat-error class="error" *ngIf="form.get('birthDate')?.errors?.['required']">Birth Date is required!</mat-error>
+      </ng-container>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" floatLabel="always">
+      <input id="password" type="password" matInput  formControlName="password">
+      <mat-label for="password">Password</mat-label>
+  
+      <ng-container *ngIf="form.get('password')?.touched && form.get('password')?.errors">
+        <mat-error class="error" *ngIf="form.get('password')?.errors?.['required']">Password is required!</mat-error>
+        <mat-error class="error" *ngIf="form.get('password')?.errors?.['minlength']">Password is too short ({{form.get('password')?.errors?.['minlength']['requiredLength']}} char min)!</mat-error>
+      </ng-container>
+    </mat-form-field>
+  </div>
+
+  <span class="buttons-wrap">
+    <button mat-raised-button type="button" color="primary" (click)="saveUser()">Save</button>
+    <button mat-raised-button type="button" color="warn" (click)="cancel()">Cancel</button>
+  </span>
+</form>

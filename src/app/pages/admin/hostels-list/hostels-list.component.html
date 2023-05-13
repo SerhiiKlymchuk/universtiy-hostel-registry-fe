@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row align-items-baseline">
+        <div class="col-md-9">
+            <mat-form-field appearance="outline" style="width: 100%">
+                <input type="text" matInput placeholder="Search..." [formControl]="searchControl">
+                <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-3">
+            <button (click)="createHostel()" mat-raised-button mat-ripple color="primary">+ Add New Hostel</button>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <mat-paginator #paginator
+               class="demo-paginator"
+               (page)="handlePageEvent($event)"
+               [length]="count"
+               [pageSize]="filters.limit"
+               [showFirstLastButtons]="false"
+               [pageSizeOptions]="[5, 10, 20]"
+               [hidePageSize]="false"
+               [pageIndex]="currentPage"
+               aria-label="Select page">
+            </mat-paginator>
+
+            <ul class="hostels" [class.loading]="isLoading">
+                <li *ngFor="let hostel of hostels" class="hostel" [@fadeAnimation]>
+                    <div [lazyLoad]="hostel.photos[0]" class="hostel__image" alt="hostel"></div>
+
+                    <div class="hostel-info">
+                        <h3 class="hostel__name">{{hostel.name}}</h3>
+                        <p class="hostel__address">{{hostel.address}}</p>
+                        <p class="hostel__university"><b>University</b>: {{hostel.university?.name}}</p>
+                        <p class="hostel__coord"><b>Coordinates</b>: {{hostel.coordinates}}</p>
+                    </div>
+
+                    <div class="buttons">
+                        <button class="button blue" (click)="editHostel(hostel)">Edit Hostel</button>
+                        <button class="button red" (click)="deleteHostel(hostel)">Delete Hostel</button>
+                    </div>
+
+                </li>
+
+                <li *ngIf="!hostels.length && !isLoading">No items found.</li>
+            </ul>
+        </div>
+    </div>
+    
+</div>

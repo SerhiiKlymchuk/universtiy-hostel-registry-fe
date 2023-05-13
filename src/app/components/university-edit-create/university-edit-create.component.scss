@@ -1,0 +1,40 @@
+
+.form {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 35px;
+  margin-top: 15px;
+  padding: 25px;
+
+  &-image{
+    width: 100%;
+    min-height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50%;
+  }
+
+  &.loading{
+    filter: blur(3px);
+    pointer-events: none;
+  }
+
+  .fields-wrap{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  mat-error{
+    position: absolute;
+    bottom: -22px;
+    font-size: 14px;
+  }
+
+  .buttons-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+}

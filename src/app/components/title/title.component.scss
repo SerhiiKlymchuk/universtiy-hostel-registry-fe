@@ -1,0 +1,18 @@
+h1{
+    font-weight: 400;
+    margin-bottom: 0;
+    cursor: pointer;
+
+    b{
+        font-weight: 500;
+    }
+
+    &::before{
+        content: '';
+        border: 2px solid #f1a748;
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        margin-right: 7.5px;
+    }
+}

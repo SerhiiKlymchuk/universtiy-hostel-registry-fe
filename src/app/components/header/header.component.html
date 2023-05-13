@@ -1,0 +1,11 @@
+<header class="header">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-5"><app-title routerLink="/"></app-title></div>
+            <div class="col-5 text-right">
+                <a routerLink="/admin" matTooltip="Admin"><mat-icon class="mat-icon"> person </mat-icon></a>
+                <mat-icon class="mat-icon" *ngIf="isAuthorized" matTooltip="Logout" (click)="logout()">exit_to_app</mat-icon>
+            </div>
+        </div>
+    </div>
+</header>

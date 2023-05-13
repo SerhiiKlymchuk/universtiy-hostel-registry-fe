@@ -1,0 +1,7 @@
+<h1 mat-dialog-title>{{data.header}}</h1>
+<div mat-dialog-actions class="justify-content-around">
+  <button class="button" mat-raised-button type="button" (click)="ref.close(true)">Confirm</button>
+  <button class="button" mat-raised-button type="button" color="warn" (click)="ref.close(false)">Cancel</button>
+</div>
+
+<!-- <mat-spinner class="spinner" *ngIf="isLoading" [diameter]="34"></mat-spinner> -->

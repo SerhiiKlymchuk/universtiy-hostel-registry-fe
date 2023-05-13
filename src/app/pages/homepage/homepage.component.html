@@ -1,0 +1,44 @@
+<div class="container homepage">
+    <div class="row mt-5 mb-5">
+        <div class="col-md-7 list-wrapper">
+            <mat-form-field appearance="outline" style="width: 100%">
+                <input type="text" matInput placeholder="Search..." [formControl]="searchControl">
+                <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+            
+            <ul class="hostels" [class.loading]="isLoading">
+                <li *ngFor="let hostel of hostels" class="hostel" [@fadeAnimation]>
+                    <div [lazyLoad]="hostel.photos[0] || DEFAULT_IMAGE" class="hostel__image" alt="hostel"></div>
+
+                    <div class="hostel-info">
+                        <h3 class="hostel__name">{{hostel.name}}</h3>
+                        <p class="hostel__address">{{hostel.address}}</p>
+                        <p class="hostel__university"><b>University</b>: {{hostel.university?.name}}</p>
+                    </div>
+
+                    <a class="button" [routerLink]="'/hostel/'+hostel._id">View Hostel</a>
+                </li>
+
+                <li *ngIf="!hostels.length && !isLoading">No items found.</li>
+
+                <a class="button more" (click)="onLoadMore()" *ngIf="count > (filters.limit + filters.skip)">Load More</a>
+            </ul>
+
+            <mat-spinner class="spinner" *ngIf="isLoading" [diameter]="64" color="primary"></mat-spinner>
+        </div>
+        <div class="col-md-5">
+            <div
+                class="map"
+                leaflet 
+                [leafletOptions]="mapOptions"
+                [leafletLayers]="markers">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+</div>

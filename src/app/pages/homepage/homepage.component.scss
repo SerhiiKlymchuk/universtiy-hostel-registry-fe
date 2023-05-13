@@ -1,0 +1,110 @@
+.homepage {
+  .list-wrapper {
+    position: relative;
+    transition: 0.2s linear;
+  }
+
+  .hostels {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    &.loading {
+      filter: blur(5px);
+      transition: 0.2s linear;
+    }
+
+    .hostel {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 25px;
+
+      &__image {
+        width: 200px;
+        min-width: 200px;
+        height: 150px;
+        background-size: cover;
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-color: #edefff;
+      }
+
+      &-info {
+        width: 100%;
+      }
+    }
+
+    .button{
+      display: block;
+      width: 235px;
+      height: 25px;
+      text-decoration: none;
+      padding: 5px 15px;
+      border: 2px solid #f1a748;
+      color: #f1a748;
+      box-shadow: none;
+      background-color: #fff;
+      transition: background-color .15s ease-out;
+      border-radius: 4px;
+      text-align: center;
+      font-weight: 500;
+      line-height: 26px;
+      cursor: pointer;
+
+      &:hover{
+        background-color: #f1a748;
+        color: #fff;
+      }
+
+      &.more{
+        margin: 25px auto;
+      }
+    }
+  }
+
+  .spinner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .map{
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+}
+
+::ng-deep {
+  .map-pin {
+    
+    // top: 40%;
+    // left: 50%;
+    // margin-left: -115px;
+    
+    &__child{
+      position: relative;
+      border-radius: 85% 85% 85% 0;
+      border: 3px solid gold;
+      width: 15px;
+      height: 15px;
+      transform: rotate(-45deg);
+      color: green;
+
+      i{
+        position: absolute;
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  
+    
+  }
+  
+}

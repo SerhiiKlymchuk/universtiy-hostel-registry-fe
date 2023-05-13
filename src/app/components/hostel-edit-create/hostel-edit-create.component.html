@@ -1,0 +1,72 @@
+<h1 mat-dialog-title>{{data.header}}</h1>
+<form [formGroup]="form" class="form" [class.loading]="isLoading" mat-dialog-content>
+  <div class="fields-wrap">
+    <mat-form-field appearance="outline" floatLabel="always">
+      <input id="name" type="text" matInput placeholder="Name" formControlName="name">
+      <mat-label for="name">Name</mat-label>
+  
+      <ng-container *ngIf="form.get('name')?.touched && form.get('name')?.errors">
+        <mat-error class="error" *ngIf="form.get('name')?.errors?.['required']">Name is required!</mat-error>
+        <mat-error class="error" *ngIf="form.get('name')?.errors?.['maxlength']">Name is too long! No more than (180 chars)</mat-error>
+      </ng-container>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" floatLabel="always">
+      <input id="address" type="text" matInput placeholder="Address" formControlName="address">
+      <mat-label for="address">Address</mat-label>
+
+      <ng-container *ngIf="form.get('address')?.touched && form.get('address')?.errors">
+        <mat-error class="error" *ngIf="form.get('address')?.errors?.['required']">Address is required!</mat-error>
+        <mat-error class="error" *ngIf="form.get('address')?.errors?.['maxlength']">Address is too long! No more than (180 chars)</mat-error>
+      </ng-container>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" floatLabel="always">
+      <input id="pointColor" type="color" matInput placeholder="Color Point" formControlName="pointColor">
+      <mat-label for="pointColor">Color Point</mat-label>
+
+      <ng-container *ngIf="form.get('pointColor')?.touched && form.get('pointColor')?.errors">
+        <mat-error class="error" *ngIf="form.get('pointColor')?.errors?.['required']">Color Point is required!</mat-error>
+        <mat-error class="error" *ngIf="form.get('pointColor')?.errors?.['maxlength']">Color Point is too long! No more than (180 chars)</mat-error>
+      </ng-container>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" floatLabel="always">
+      <input id="coordinates" type="text" matInput placeholder="Coordintes" formControlName="coordinates">
+      <mat-label for="coordinates">Coordintes</mat-label>
+
+      <ng-container *ngIf="form.get('coordinates')?.touched && form.get('coordinates')?.errors">
+        <mat-error class="error" *ngIf="form.get('coordinates')?.errors?.['required']">Coordinates are required!</mat-error>
+      </ng-container>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-select formControlName="university">
+        <mat-option *ngFor="let u of universities" [value]="u._id">{{u.name}}</mat-option>
+      </mat-select>
+      <mat-label>University</mat-label>
+
+      <ng-container *ngIf="form.get('university')?.touched && form.get('university')?.errors">
+        <mat-error class="error" *ngIf="form.get('university')?.errors?.['university']">University is required!</mat-error>
+      </ng-container>
+    </mat-form-field>
+
+    <label for="file-upload" class="file-upload">
+      <mat-icon>cloud_upload</mat-icon> File Upload
+      <input class="d-none" type="file" id="file-upload" placeholder="" accept=".jpg, .png, .gif">
+    </label>
+
+    <div class="image-wrapper">
+      <div class="image" *ngFor="let image of (form.get('photos')?.value); let i = index;">
+        <img [src]="image | blobToImage" alt="">
+
+        <mat-icon class="remove" (click)="removePhoto(image)">close</mat-icon>
+      </div>
+    </div>
+  </div>
+
+  <span class="buttons-wrap">
+    <button mat-raised-button type="button" color="primary" (click)="saveHostel()">Save</button>
+    <button mat-raised-button type="button" color="warn" (click)="cancel()">Cancel</button>
+  </span>
+</form>

@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.mdc-snackbar {
+  .mdc-snackbar__surface {
+    background-color: #fff !important;
+    box-shadow: none !important;
+  }
+
+  &.snack-success{
+    .mdc-snackbar__surface{
+      border: 1px solid #228d22;
+      
+      .title, .icon_success{
+        display: flex !important;
+        color: #228d22;
+      }
+    }
+  }
+
+  &.snack-error{
+    .mdc-snackbar__surface{
+      border: 1px solid #c53333;
+      
+      .title, .icon_error{
+        display: flex !important;
+        color: #c53333;
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+main {
+    overflow-x: hidden;
+}
+
+.nav{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 150px;
+
+    a{
+        display: block;
+        font: 500 18px Arial;
+        color: #333333;
+        text-decoration: none;
+
+        &.active{
+            font-weight: 600;
+            border-bottom: 2px solid rgb(69, 81, 147);;
+        }
+    }
+}
