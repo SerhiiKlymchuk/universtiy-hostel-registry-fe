@@ -13,7 +13,10 @@ const routes: Routes = [
         path: '',
         loadChildren: () => import('./pages/homepage/homepage.module').then(m => m.HomepageModule)
       },
-    
+      {
+        path: 'hostel/:id',
+        loadChildren: () => import('./pages/hostel-page/hostel-page.module').then(m => m.HostelPageModule)
+      },
     ]
   },
   {

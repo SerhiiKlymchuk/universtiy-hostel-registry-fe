@@ -1,12 +1,11 @@
+import { University } from "./university.interface";
+
 export interface Hostel {
     _id: string,
     name: string,
     address: string,
     coordinates: string[],
-    university: {
-        _id: string,
-        name: string
-    } | null,
+    university: University | null,
     pointColor: string,
     photos: any[],
     createdAt: Date,

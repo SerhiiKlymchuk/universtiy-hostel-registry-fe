@@ -1,1 +1,48 @@
-<p>hostel-page works!</p>
+<div class="container hostel-page">
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <button routerLink="/" mat-stroked-button color="primary">&#8249; Back</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <owl-carousel-o [options]="customOptions">
+                <ng-container *ngFor="let p of hostel.photos">
+                    <ng-template carouselSlide>
+                        <img [src]="p" [alt]="hostel.name">
+                    </ng-template>  
+                </ng-container>
+            </owl-carousel-o>
+
+            <div class="university-info" *ngIf="hostel.university?._id">
+                <h2>University Info</h2>
+                <img [lazyLoad]="hostel.university?.logoImage || ''" [alt]="hostel.university?.name">
+                <p><b>University: </b>{{hostel.university?.name}}</p>
+                <p><b>Address: </b>{{hostel.university?.address}}</p>
+                <p><b>Rector: </b>{{hostel.university?.rector}}</p>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="hostel-info">
+                <h1>{{hostel.name}}</h1>
+                <p><b>Address:</b> {{hostel.address}}</p>
+                <p><b>Map color:</b> <span class="hostel__color" [style.backgroundColor]="hostel.pointColor"></span></p>
+            </div>
+            
+            <div
+                *ngIf="hostel._id"
+                class="hostel-map"
+                leaflet 
+                [leafletOptions]="mapOptions"
+                [leafletLayers]="markers">
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-md-6">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
+</div>

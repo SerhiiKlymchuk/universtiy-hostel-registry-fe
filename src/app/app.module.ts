@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
-import { HostelPageComponent } from './pages/hostel-page/hostel-page.component';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './shared/material.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -32,7 +31,6 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     AppComponent,
     DefaultLayoutComponent,
     AdminLayoutComponent,
-    HostelPageComponent,
     HeaderComponent,
     FooterComponent,
     TitleComponent

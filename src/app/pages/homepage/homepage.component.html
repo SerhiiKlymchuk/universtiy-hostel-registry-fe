@@ -5,6 +5,16 @@
                 <input type="text" matInput placeholder="Search..." [formControl]="searchControl">
                 <mat-icon matSuffix>search</mat-icon>
             </mat-form-field>
+
+            <div class="filters">
+                <mat-form-field appearance="outline">
+                    <mat-label>University</mat-label>
+                    <mat-select [formControl]="universityControl">
+                        <mat-option value="">All Universities</mat-option>
+                        <mat-option *ngFor="let u of universities" [value]="u._id">{{u.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
             
             <ul class="hostels" [class.loading]="isLoading">
                 <li *ngFor="let hostel of hostels" class="hostel" [@fadeAnimation]>
@@ -13,7 +23,7 @@
                     <div class="hostel-info">
                         <h3 class="hostel__name">{{hostel.name}}</h3>
                         <p class="hostel__address">{{hostel.address}}</p>
-                        <p class="hostel__university"><b>University</b>: {{hostel.university?.name}}</p>
+                        <p class="hostel__university" *ngIf="hostel.university?._id"><b>University</b>: {{hostel.university?.name}}</p>
                     </div>
 
                     <a class="button" [routerLink]="'/hostel/'+hostel._id">View Hostel</a>
@@ -28,6 +38,7 @@
         </div>
         <div class="col-md-5">
             <div
+                *ngIf="!isLoading"
                 class="map"
                 leaflet 
                 [leafletOptions]="mapOptions"

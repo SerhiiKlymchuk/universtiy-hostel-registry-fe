@@ -44,7 +44,7 @@
 
     <mat-form-field appearance="outline" floatLabel="always">
       <input id="coordinates" type="text" matInput placeholder="Coordintes" formControlName="coordinates">
-      <mat-label for="coordinates">Coordintes</mat-label>
+      <mat-label for="coordinates">Coordintes (lat, lang)</mat-label>
 
       <ng-container *ngIf="form.get('coordinates')?.touched && form.get('coordinates')?.errors">
         <mat-error class="error" *ngIf="form.get('coordinates')?.errors?.['required']">Coordinates are required!</mat-error>

@@ -186,7 +186,6 @@ export class HostelEditCreateComponent implements OnInit {
   }
 
   public mapPhotosAsync(images: string[]) {
-    console.log(images);
     images.forEach(async (image) => {
       const file = await this.getFileFromUrl(image, 'image');
       this.readFileAndAdd(file);
@@ -220,17 +219,8 @@ export class HostelEditCreateComponent implements OnInit {
   }
 
   public readFileAndAdd(file: any): void {
-    // const form = this.form;
-    // const fr=new FileReader();
-
-    // fr.onload = function(e) {
-    //   const photos = form.get('photos')?.value || [];
-    //   form.get('photos')?.patchValue([this.result, ...photos])
-    // };
-
-    // fr.readAsDataURL(file)
     const photos = this.form.get('photos')?.value || [];
-    this.form.get('photos')?.patchValue([file, ...photos]);
+    this.form.get('photos')?.patchValue([...photos, file]);
   }
 
   @HostListener('change', ['$event.target.files']) emitFiles(event: FileList) {

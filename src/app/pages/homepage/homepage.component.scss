@@ -78,11 +78,6 @@
 
 ::ng-deep {
   .map-pin {
-    
-    // top: 40%;
-    // left: 50%;
-    // margin-left: -115px;
-    
     &__child{
       position: relative;
       border-radius: 85% 85% 85% 0;
@@ -103,8 +98,5 @@
         transform: translate(-50%, -50%);
       }
     }
-  
-    
   }
-  
 }
