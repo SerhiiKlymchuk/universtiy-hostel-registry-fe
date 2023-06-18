@@ -103,6 +103,11 @@ export class HomepageComponent implements OnInit {
         this.resetPagination();
         this.searchControl.setValue('', { emitEvent: false });
         this.setFilter('university', value);
+        
+        if(value) {
+          navigator.clipboard.writeText(value);
+        }
+        
         this.findAllHostels(true);
       },
     });
